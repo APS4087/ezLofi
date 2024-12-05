@@ -1,7 +1,6 @@
-<h1 align="center">Welcome to my Lofi Music Project</h1>
+<h1 align="center">Welcome to the Lofi Music Playground</h1>
 
-> Its purpose is to offer a relaxing musical experience around “lofi” music. Interact with the instruments to smoothen your ears.
-
+> This project aims to provide a calming and immersive musical experience centered around "lofi" music. Engage with the instruments to enhance your auditory journey.
 
 ## Prerequisites
 
@@ -26,6 +25,10 @@ npm run build
 npm run dev
 ```
 
-## Authors
+## Acknowledgements
+
+- [Draco 3D Data Compression](https://google.github.io/draco/)
+- [Three.js](https://threejs.org/)
+- [GSAP](https://greensock.com/gsap/)
 
 
