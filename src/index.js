@@ -7,7 +7,7 @@ import Guitar from "./javascript/Guitar.js";
 import Drums from "./javascript/Drums.js";
 import Bass from "./javascript/Bass.js";
 // Box
-import Box from "./javascript/Box.js";
+import Box from "./javascript/box.js";
 // Start
 import startWebsite from "./javascript/Start.js";
 // Sounds
