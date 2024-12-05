@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500" height="500" viewBox="0 0 500 500">
+  <defs>
+    <clipPath id="clip-texturePiano">
+      <rect width="500" height="500"/>
+    </clipPath>
+  </defs>
+  <g id="texturePiano" clip-path="url(#clip-texturePiano)">
+    <rect width="500" height="500" fill="#fff"/>
+    <text id="Ici_le_piano_sert_de_nappe_il_permet_de_recouvrir_la_production_en_plaquant_les_accords._Il_est_la_base_de_ce_morceau_car_c_est_lui_qui_tient_l_intégralité_de_celui-ci._Ainsi_pour_bien_comprendre_la_structure_de_ce_son_il_est_impératif_d_écouter_attent" data-name="Ici, le piano sert de nappe, il permet de recouvrir la production en plaquant les accords. Il est la base de ce morceau car c’est lui qui tient l’intégralité de celui-ci. Ainsi, pour bien comprendre la structure de ce son, il est impératif d’écouter attent" transform="translate(28 92)" font-size="15" font-family="Lato-Light, Lato" font-weight="300"><tspan x="0" y="15">Ici, le piano sert de nappe, il permet de recouvrir la </tspan><tspan x="0" y="33">production en plaquant les accords. Il est la base de ce </tspan><tspan x="0" y="51">morceau car c’est lui qui tient l’intégralité de celui-ci. </tspan><tspan x="0" y="69">Ainsi, pour bien comprendre la structure de ce son, il est </tspan><tspan x="0" y="87">impératif d’écouter attentivement le piano. Les notes </tspan><tspan x="0" y="105">jouées sont très douces, elles sont claires avec beaucoup </tspan><tspan x="0" y="123">de fréquences aiguës.</tspan></text>
+  </g>
+</svg>

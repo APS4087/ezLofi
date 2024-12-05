@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="favicon.svg" />
+    <title>Lofi Music Museum</title>
+    <meta
+      name="description"
+      content="Welcome to my little museum! Its purpose is to offer a relaxing musical experience around “lofi” music."
+    />
+  </head>
+  <body>
+    <!-- START -->
+    <div class="start start-js">
+      <p>Use your headphones for an immersive experience</p>
+      <button class="start-button-js">Start</button>
+    </div>
+    <!-- CANVAS -->
+    <section class="canvas canvas-js"></section>
+    <section class="background">
+      <h1>Music Instruments Museum</h1>
+    </section>
+    <!-- MUTE/UNMUTE BUTTONS -->
+    <img
+      class="unmute unmute-js"
+      src="./images/controls/unmute.svg"
+      alt="unmute"
+    />
+    <img
+      class="mute mute-js hidden"
+      src="./images/controls/mute.svg"
+      alt="mute"
+    />
+    <!-- CONTAINER -->
+    <section class="container">
+      <!-- HEADER -->
+      <div class="header">
+        <a href="index.html">
+          <img class="logo" src="./images/logo.svg" alt="logo" />
+        </a>
+        <!-- Left menu -->
+        <h2 class="about-button-js">About</h2>
+        <span>|</span>
+        <h2 class="credits-button-js">Portfolio</h2>
+        <!-- Sounds menu -->
+        <div class="sounds">
+          <h2 class="sound soundActive" data-value="sound1">Sound1</h2>
+          <h2 class="sound" data-value="sound2">Sound2</h2>
+          <h2 class="sound" data-value="sound3">Sound3</h2>
+        </div>
+      </div>
+      <!-- MODALS -->
+      <!-- MODALS > WELCOME -->
+      <div class="modal welcome-modal welcome-modal-js">
+        <div class="title">
+          <h1 class="welcome">Welcome<br />to My Lofi Project</h1>
+        </div>
+        <div class="container">
+          <p>
+            Welcome to my little museum! This space is designed to offer a
+            relaxing and immersive musical experience centered around
+            “<b>lofi</b>” music. <b>Interact with the instruments</b> to enhance
+            your auditory journey.
+          </p>
+          <button class="okay close-welcome-js">Let's Go</button>
+        </div>
+      </div>
+      <!-- MODALS > ABOUT -->
+      <div class="modal about-modal-js">
+        <div class="title">
+          <h1>The<br />Concept</h1>
+        </div>
+        <div class="container">
+          <p>
+            I hope you enjoy your visit! This website was created as a
+            <b>personal project</b> to explore and learn <b>Three.js</b> and
+            <b>GSAP</b>. It also serves as a serene space to listen to
+            <b>lofi</b> music while studying or relaxing.
+          </p>
+          <img
+            class="close close-about-js"
+            src="./images/controls/close.svg"
+            alt="close"
+          />
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
