@@ -80,25 +80,27 @@ b
 
 
 button 
-        background #0077b6
+    background #0077b6
+    color white
+    padding 10px 20px
+    width 120px
+    height 40px
+    border none
+    margin-top 30px
+    border-radius 25px
+    text-transform uppercase
+    letter-spacing 3px
+    cursor pointer
+    user-select none
+    pointer-events auto
+    outline none
+    font-size 18px
+    transition: background 0.5s, transform 0.2s
+    box-shadow 0 4px 6px rgba(0, 0, 0, 0.1)
+    &:hover
+        background #005f99 
         color white
-        padding 5px 10px 5px 10px
-        width 100px
-        height 35px
-        border none
-        margin-top 30px
-        border-radius 5px
-        text-transform uppercase
-        letter-spacing 3px
-        cursor pointer
-        user-select none
-        pointer-events auto
-        outline none
-        font-size 20
-        transition-duration 0.5s
-        &:hover
-            background #005f99 
-            color white 
+        transform scale(1.05)
 
 button.okay
     background rgba(255, 255, 255, 0.3)
@@ -152,7 +154,7 @@ img.unmute{
  */
 // Background
 .background
-    background #E0E4FF
+    background #D1C4E9  // Light purple background
     z-index -2
     position absolute
     box-sizing border-box
@@ -167,7 +169,7 @@ img.unmute{
         font-family 'Work Sans', sans-serif;
         font-size 200px
         text-transform uppercase
-        color #7F8CFF
+        color rgba(81, 45, 168, 0.8)  // Darker purple with some transparency
         line-height 200px
 
 // Container > Header
@@ -389,12 +391,12 @@ img.unmute{
         padding 10px
         flex-direction column
         align-items flex-start
-        width 100% // Ensure the header takes the full width of the screen
+        width 100%
 
         .logo
             width 25px
             height 25px
-            margin-bottom 10px // Add some space below the logo
+            margin-bottom 10px
 
         h2
             font-size 6vw
@@ -402,18 +404,18 @@ img.unmute{
 
         .about-button-js
             order 1
-            margin-bottom 10px // Add some space below the About button
+            margin-bottom 10px
 
         .credits-button-js
             order 2
-            margin-bottom 10px // Add some space below the Portfolio button
+            margin-bottom 10px
 
         .sounds
-            order 3Q
+            order 3
             flex-direction column
             align-items flex-start
             margin-top 10px
-Queries
+
     .modal .title h1
         font-size 14vw
 
