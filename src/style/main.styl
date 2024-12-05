@@ -1,373 +1,412 @@
 // FONTS
 @font-face {
-  font-family: 'Lato';
-  src: url('../fonts/Lato-Light.woff2') format('woff2'),
-      url('../fonts/Lato-Light.woff') format('woff');
-  font-weight: 300;
-  font-style: normal;
+    font-family: 'Lato';
+    src: url('../fonts/Lato-Light.woff2') format('woff2'),
+        url('../fonts/Lato-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Lato';
-  src: url('../fonts/Lato-Bold.woff2') format('woff2'),
-      url('../fonts/Lato-Bold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
+    font-family: 'Lato';
+    src: url('../fonts/Lato-Bold.woff2') format('woff2'),
+        url('../fonts/Lato-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Lato';
-  src: url('../fonts/Lato-Regular.woff2') format('woff2'),
-      url('../fonts/Lato-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'Lato';
+    src: url('../fonts/Lato-Regular.woff2') format('woff2'),
+        url('../fonts/Lato-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 *
-  margin 0
-  padding 0
-  box-sizing border-box
+    margin 0
+    padding 0
+    box-sizing border-box
+
 
 body 
-  overflow hidden
-  background linear-gradient(#D5D9FF, #C2C8FC)
+    overflow hidden
+    background linear-gradient(#D5D9FF, #C2C8FC)
 
 /**
-* TYPO
-*/
+ * TYPO
+ */
 
 p   
-  font-family lato
-  font-weight 200
-  font-size 30px
+    font-family lato
+    font-weight 200
+    font-size 30px
 
 a
-  text-decoration none
-  font-weight 400
-  color black
-  cursor pointer
-  pointer-events auto
+    text-decoration none
+    font-weight 400
+    color black
+    cursor pointer
+    pointer-events auto
 
 b
-  font-weight 400
+    font-weight 400
 
 /**
-* START
-*/ 
+ * START
+ */ 
 
 // Start background
 .start
-  z-index 10
-  position absolute
-  background linear-gradient(#D5D9FF, #C2C8FC)
-  width 100vw
-  height 100vh
-  display flex
-  flex-direction column
-  justify-content center
-  align-items center   
-  font-family lato
-  will-change transform
+    z-index 10
+    position absolute
+    background linear-gradient(#D5D9FF, #C2C8FC)
+    width 100vw
+    height 100vh
+    display flex
+    flex-direction column
+    justify-content center
+    align-items center   
+    font-family lato
+    will-change transform
 
-  p
-    color white
-    font-size 20px
-    text-transform uppercase
-    letter-spacing 3px
-    font-weight 800
+    p
+        color white
+        font-size 20px
+        text-transform uppercase
+        letter-spacing 3px
+        font-weight 800
+
 
 button 
-  background #AFB8FF
-  color white
-  padding 5px 10px 5px 10px
-  width 100px
-  height 35px
-  border none
-  margin-top 30px
-  border-radius 5px
-  text-transform uppercase
-  letter-spacing 3px
-  cursor pointer
-  user-select none
-  pointer-events auto
-  outline none
-  font-size 20px
-  transition-duration 0.5s
-  &:hover
-    background white 
-    color #C7CDFF 
+        background #AFB8FF
+        color white
+        padding 5px 10px 5px 10px
+        width 100px
+        height 35px
+        border none
+        margin-top 30px
+        border-radius 5px
+        text-transform uppercase
+        letter-spacing 3px
+        cursor pointer
+        user-select none
+        pointer-events auto
+        outline none
+        font-size 20
+        transition-duration 0.5s
+        &:hover
+            background white 
+            color #C7CDFF 
 
 button.okay
-  background #FF93BC
+        background #FF93BC
 
-  &:hover
-    background white 
-    color #FF93BC
+        &:hover
+            background white 
+            color #FF93BC
 
 /**
-* CANVAS
-*/
+ * CANVAS
+ */
 
 .canvas
-  position absolute
-  z-index 3
-  top 0
-  left 0
-  width 100%
-  height 100%
-  canvas
-    position absolute
+     position absolute
+    z-index 3
     top 0
     left 0
-    pointer-events auto
+    width 50vw
+    height 100vh
+    canvas
+        position absolute
+        top 0
+        left 0
+        pointer-events auto
+
 
 /*
-* MUTE BUTTON
-*/
+ * MUTE BUTTON
+ */
 
 img.mute,
-img.unmute
-  z-index 6
-  position absolute
-  bottom 40px 
-  right 40px
-  width 20px
-  height 20px
-  cursor pointer
+img.unmute{
+    z-index 6
+    position absolute
+    bottom 40px 
+    right 40px
+    width 20px
+    height 20px
+    cursor pointer
+}
 
 /*
-* CONTAINER 
-*/
+ * CONTAINER 
+ */
 // Background
 .background
-  z-index -2
-  position absolute
-  box-sizing border-box
-  padding 30px
-  width 100vw
-  height 100vh
-  display flex
-  justify-content flex-start
-  align-items center
-
-  h1 
-    font-family 'Work Sans', sans-serif
-    font-size 10vw
-    text-transform uppercase
-    color #AFB8FF
-    line-height 1
-
-// Container > Header
-.container
-  width 100vw
-  height 100vh
-  display flex
-  flex-direction column
-  justify-content center
-  align-items flex-start
-  
-  .header
+    z-index -2
     position absolute
-    top 0
-    padding 40px
-    width 100vw
-    display flex
-    justify-content space-between
-    align-items center
-    pointer-events auto // Ensure pointer events are enabled
-
-    .logo
-      width 40px
-      height 40px
-      cursor pointer
-      margin-right 10px
-
-    h2
-      text-decoration none
-      font-family lato 
-      font-size 4vw
-      color black
-      text-transform uppercase
-      font-weight 1000
-      letter-spacing 3px
-      margin 0px 10px
-      cursor pointer
-
-    // Sounds menu
-    .sound
-      transition-duration 0.2s
-      color #95A0F5
-      &:hover
-        color black
-
-    .soundActive
-      color black
-
-    .sounds
-      display flex
-      flex-direction row
-      justify-content center
-      align-items center
-    
-      .sound
-        transition-duration 0.2s
-        color #95A0F5
-        font-size 1.5vw // Adjust the font size for larger screens
-        padding 0.5vw // Add padding to make the clickable area smaller
-        cursor pointer
-    
-        &:hover
-          color black
-    
-      .soundActive
-        color black
-
-    span
-      margin-top 2px
-      font-weight 1000
-
-  // Modals
-  .modal
-    z-index -10
-    display flex
-    align-items center
-    justify-content center
-    flex-direction column
-    position absolute
+    box-sizing border-box
     padding 30px
     width 100vw
     height 100vh
-    opacity 0
-    pointer-events none
-    background #DBF1FF
-    will-change transform
+    display flex
+    justify-content flex-start
+    align-items center
 
-    .title
-      position absolute
-      display flex
-      justify-content flex-start
-      width 100%
-      padding-left 30px
-      h1  
-        z-index -1
-        font-family 'Work Sans', sans-serif
-        font-size 10vw
+    h1 
+        font-family 'Work Sans', sans-serif;
+        font-size 200px
         text-transform uppercase
-        color #C9EAFF
-        line-height 1
+        color #AFB8FF
+        line-height 200px
 
-      h1.credits
-        color #FFECC4
-      
-      h1.welcome
-        color #FFE6F0
-
-    .container
-      position relative
-      display flex
-      justify-content center
-      align-items center
-      width 90%
-      height auto
-
-      // Close modal
-      .close
+// Container > Header
+.container
+    width 100vw
+    height 100vh
+    display flex
+    flex-direction column
+    justify-content center
+    align-items flex-start
+    
+    .header
+        z-index 2
         position absolute
-        right -20px
-        top -20px
-        width 20px
-        height 20px
-        cursor pointer
+        top 0
+        padding 40px
+        width 100vw
+        display flex
+        justify-content flex-start
+        align-items center
         pointer-events auto
 
-  .credits-modal
-    background #FFF4DE
+        .logo
+            width 50px
+            height 50px
+            cursor pointer
+            margin-right 10px
 
-  .welcome-modal 
-    opacity 1
-    z-index 3
-    background #FFEFF4
+        h2
+            text-decoration none
+            font-family lato 
+            font-size 14px
+            color black
+            text-transform uppercase
+            font-weight 1000
+            letter-spacing 3px
+            margin 0px 10px 0px 10px
+            cursor pointer
+
+        // Sounds menu
+        .sound
+            transition-duration 0.2s
+            color #95A0F5
+            &:hover
+                color black
+
+        .soundActive
+            color black
+
+        .sounds
+            position absolute 
+            right 30px
+            display flex
+            flex-direction row
+
+        span
+            margin-top 2px
+            font-weight 1000
+
+    // Modals
+    .modal
+        z-index -10
+        display flex
+        align-items center
+        justify-content center
+        flex-direction column
+        position absolute
+        padding 30px
+        width 100vw
+        height 100vh
+        opacity 0
+        pointer-events none
+        background #DBF1FF
+        will-change transform
+
+
+        .title
+            position absolute
+            display flex
+            justify-content flex-start
+            width 100%
+            padding-left 30px
+            h1  
+                z-index -1
+                font-family 'Work Sans', sans-serif;
+                font-size 200px
+                text-transform uppercase
+                color #C9EAFF
+                line-height 200px
+
+            h1.credits
+                color #FFECC4
+            
+            h1.welcome
+                color #FFE6F0
+
+        .container
+            position relative
+            display flex
+            justify-content center
+            align-items center
+            width 45%
+            height auto
+
+            // Close modal
+            .close
+                position absolute
+                right -50px
+                top -50px
+                width 20px
+                height 20px
+                cursor pointer
+                pointer-events auto
+
+    .credits-modal
+            background #FFF4DE
+
+    .welcome-modal 
+            opacity 1
+            z-index 3
+            background #FFEFF4
+            
+
 
 // HIDDEN
 
-.hidden
-  display none
+.hidden{
+    display none
+    }
 
 // ANIMATIONS CLASS
 
 .fadeOut
-  animation-name fadeOut
-  animation-duration 1s
-  animation-fill-mode forwards
+    animation-name fadeOut
+    animation-duration 1s
+    animation-fill-mode forwards
+
 
 .closeModal
-  animation-name fadeOut
-  animation-duration 0s
-  animation-fill-mode forwards
+    animation-name fadeOut
+    animation-duration 0s
+    animation-fill-mode forwards
 
 .openModal
-  animation-name openModal
-  animation-duration 0.4s
-  animation-fill-mode forwards
+    animation-name openModal
+    animation-duration 0.4s
+    animation-fill-mode forwards
 
 // ANIMATIONS KEYFRAMES
 
-@keyframes fadeOut
-  0%
-    opacity 1 
-  100%
-    opacity 0 
+@keyframes fadeOut{
+    0%{
+        opacity 1 
+        }
+    100%{
+        opacity 0 
+        }
+}
 
-@keyframes openModal
-  0%
-    opacity 0 
-  100%
-    opacity 1 
+@keyframes openModal{
+    
+   0%{
+        opacity 0 
+        }
+    100%{
+        opacity 1 
+        }
+}
 
 /* Media Queries for Responsive Design */
 @media (max-width: 768px)
-  .header
-    flex-direction column
-    align-items flex-start
+    .header
+        flex-direction column
+        align-items flex-start
+        padding 20px
 
-    .logo
-      width 30px
-      height 30px
+        .logo
+            width 30px
+            height 30px
+            margin-bottom 10px
 
-    h2
-      font-size 5vw
+        h2
+            font-size 5vw
+            margin 5px 0
 
-    .sounds
-      flex-direction column
-      align-items flex-start
+        .sounds
+            flex-direction column
+            align-items flex-start
+            margin-top 10px
 
-  .modal .title h1
-    font-size 12vw
+    .modal .title h1
+        font-size 12vw
 
-  .modal .container
-    width 100%
-    padding 10px
+    .modal .container
+        width 100%
+        padding 10px
 
-  button
-    width 100px
-    height 35px
-    font-size 14px
+    button
+        width 100px
+        height 35px
+        font-size 14px
 
-  .canvas
-    width 100%
-    height 100%
+    .canvas
+        width 100%
+        height 100%
 
 @media (max-width: 480px)
-  .header
-    padding 10px
+    .header
+        padding 10px
+        flex-direction column
+        align-items flex-start
+        width 100% // Ensure the header takes the full width of the screen
 
-    h2
-      font-size 6vw
+        .logo
+            width 25px
+            height 25px
+            margin-bottom 10px // Add some space below the logo
 
-  .modal .title h1
-    font-size 14vw
+        h2
+            font-size 6vw
+            margin 5px 0
 
-  button
-    width 80px
-    height 30px
-    font-size 12px
+        .about-button-js
+            order 1
+            margin-bottom 10px // Add some space below the About button
+
+        .credits-button-js
+            order 2
+            margin-bottom 10px // Add some space below the Portfolio button
+
+        .sounds
+            order 3
+            flex-direction column
+            align-items flex-start
+            margin-top 10px
+
+    .modal .title h1
+        font-size 14vw
+
+    .modal .container
+        width 100%
+        padding 10px
+
+    button
+        width 80px
+        height 30px
+        font-size 12px
+
+    .canvas
+        width 100%
+        height 100%
