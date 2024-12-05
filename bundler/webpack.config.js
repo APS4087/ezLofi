@@ -7,7 +7,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 module.exports = {
   devtool: "source-map",
   devServer: {
-    contentBase: "./dist",
+    contentBase: "./public",
     open: true,
     host: "0.0.0.0",
     useLocalIp: true,
@@ -15,7 +15,7 @@ module.exports = {
   entry: path.resolve(__dirname, "../src/index.js"),
   output: {
     filename: "bundle.[hash].js",
-    path: path.resolve(__dirname, "../dist"),
+    path: path.resolve(__dirname, "../public"), // Changed from "../dist" to "../public"
   },
   plugins: [
     new CopyWebpackPlugin([{ from: "static" }]),
