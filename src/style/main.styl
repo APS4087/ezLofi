@@ -268,12 +268,12 @@ img.unmute{
                 color #FFCCE0
 
         .container
-            position relative
             display flex
+            flex-direction column
             justify-content center
             align-items center
-            width 45%
-            height auto
+            width 90%  // Ensures good spacing
+            padding 10px
 
             // Close modal
             .close
@@ -388,46 +388,56 @@ img.unmute{
         height 50vh
 
 @media (max-width: 480px)
-    .header
-        padding 10px
-        flex-direction column
-        align-items flex-start
-        width 100%
+  .canvas
+    width 100vw
+    height 40vh
 
-        .logo
-            width 20px
-            height 20px
-            margin-bottom 10px
+  .start
+    width 100vw
+    height 100vh
+    padding 20px
+    justify-content center
+    align-items center
+    z-index 15
 
-        h2
-            font-size 5vw
-            margin 5px 0
-
-        .about-button-js
-            order 1
-            margin-bottom 10px
-
-        .credits-button-js
-            order 2
-            margin-bottom 10px
-
-        .sounds
-            order 3
-            flex-direction column
-            align-items flex-start
-            margin-top 10px
-
-    .modal .title h1
-        font-size 12vw
-
-    .modal .container
-        width 100%
-        padding 10px
+    p 
+      font-size 4vw
+      margin 10px 0
+      text-align center
+      margin: 0 auto
 
     button
-        width 70px
-        height 25px
+      width 80%
+      height 40px
+      font-size 4vw
+      margin: 10px auto
+      z-index 20
 
-    .canvas
-        width 100vw
-        height 40vh
+  .header
+    flex-direction column
+    align-items center
+    padding 10px
+    z-index 15
+
+    .logo
+      width 30px
+      height 30px
+
+    h2
+      font-size 4vw
+      margin 5px 0
+
+  .modal
+    padding 20px
+    z-index 20
+
+    .title h1.welcome
+      font-size 12vw
+      line-height 1.2
+
+    button.okay
+      width 80%
+      height auto
+      font-size 4vw
+      padding 10px
+      margin-top 500px
