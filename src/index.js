@@ -337,7 +337,7 @@ document.addEventListener("click", () => {
   if (hoverPiano && hasPlayedZoomAnimation === false) {
     const { x, y } = isMobile()
       ? mobileZoomPositions.piano
-      : { x: 1.5, y: 1.25 };
+      : { x: 1.6, y: 1.25 };
     instrumentZoom(x, y);
     if (!isMuted) {
       if (currentSoundPlayed == 1) {
@@ -408,7 +408,7 @@ document.addEventListener("click", () => {
   if (hoverBass && hasPlayedZoomAnimation === false) {
     const { x, y } = isMobile()
       ? mobileZoomPositions.bass
-      : { x: 1.5, y: -1.45 };
+      : { x: 1.6, y: -1.45 };
     instrumentZoom(x, y);
     if (!isMuted) {
       if (currentSoundPlayed == 1) {
