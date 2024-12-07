@@ -1,6 +1,6 @@
 import "./style/main.styl";
 import * as THREE from "three";
-import { TweenLite, TimelineMax } from "gsap/all";
+import { TweenLite } from "gsap/all";
 // Instruments
 import Piano from "./javascript/Piano.js";
 import Guitar from "./javascript/Guitar.js";
@@ -164,6 +164,42 @@ const canvasContainer = document.querySelector(".canvas-js");
 canvasContainer.appendChild(renderer.domElement);
 
 /**
+ * Adjust Sizes
+ */
+const adjustSizes = () => {
+  if (sizes.width <= 768) {
+    box.group.scale.set(0.7, 0.7, 0.7);
+    box2.group.scale.set(0.7, 0.7, 0.7);
+    box3.group.scale.set(0.7, 0.7, 0.7);
+    box4.group.scale.set(0.7, 0.7, 0.7);
+
+    // Adjust positions for a bit more gap
+    box.group.position.set(0.05, -0.7, 0);
+    box2.group.position.set(1.75, -0.7, 0);
+    box3.group.position.set(1.75, 1.15, 0);
+    box4.group.position.set(0.05, 1.15, 0);
+
+    boxContent.position.set(-0.9, -0.9, 0);
+  } else {
+    box.group.scale.set(1.1, 1.1, 1.1);
+    box2.group.scale.set(1.1, 1.1, 1.1);
+    box3.group.scale.set(1.1, 1.1, 1.1);
+    box4.group.scale.set(1.1, 1.1, 1.1);
+
+    // Reset positions for larger gap
+    box.group.position.set(0.05, -1.1, 0);
+    box2.group.position.set(2.65, -1.1, 0);
+    box3.group.position.set(2.65, 1.55, 0);
+    box4.group.position.set(0.05, 1.55, 0);
+
+    boxContent.position.set(-1.3, -1.3, 0);
+  }
+};
+
+// Initial size adjustment
+adjustSizes();
+
+/**
  * Resize
  */
 window.addEventListener("resize", () => {
@@ -174,6 +210,9 @@ window.addEventListener("resize", () => {
   camera.updateProjectionMatrix();
 
   renderer.setSize(sizes.width, sizes.height);
+
+  // Adjust sizes for mobile devices
+  adjustSizes();
 });
 
 /**
@@ -204,33 +243,88 @@ startWebsite(start);
 let hasPlayedZoomAnimation = false;
 let isZooming = false;
 
+// Define zoom distances and positions for mobile devices
+const mobileZoomDistance = 4.2;
+const mobileZoomPositions = {
+  piano: { x: 0.95, y: 0.8 },
+  guitar: { x: -0.8, y: 0.8 },
+  drums: { x: -0.8, y: -0.8 },
+  bass: { x: 0.8, y: -0.8 },
+};
+
+// Function to check if the device is mobile
+const isMobile = () => sizes.width <= 768;
+
+let initialPosition = { x: 0, y: 0, z: 0 };
+
 //cameraFunction Zoom on instrument
 function instrumentZoom(posX, posY) {
+  const zoomDistance = isMobile() ? mobileZoomDistance : 4.4;
+  initialPosition = {
+    x: boxContent.position.x,
+    y: boxContent.position.y,
+    z: boxContent.position.z,
+  };
+  console.log("Initial Position:", initialPosition);
+
   setTimeout(() => {
     isZooming = false;
   }, 1000);
+
   TweenLite.to(boxContent.position, 1, {
     x: boxContent.position.x + posX,
     y: boxContent.position.y + posY,
-    z: camera.position.z - 1.6,
+    z: boxContent.position.z + zoomDistance,
     ease: "Power3.easeInOut",
+    onComplete: () => {
+      console.log("Zoomed In Position:", {
+        x: boxContent.position.x,
+        y: boxContent.position.y,
+        z: boxContent.position.z,
+      });
+      // Log position after a short delay to catch any unexpected changes
+      setTimeout(() => {
+        console.log("Position shortly after zoom in:", {
+          x: boxContent.position.x,
+          y: boxContent.position.y,
+          z: boxContent.position.z,
+        });
+      }, 500);
+    },
   });
   hasPlayedZoomAnimation = true;
   isZooming = true;
   if (!isMuted) setDefaultVolume(0.1, currentSoundPlayed);
 }
 
-function originalZoom(posX, posY, posZ) {
+function originalZoom() {
   setTimeout(() => {
     isZooming = false;
   }, 1000);
-  TweenLite.to(boxContent.position, 1, {
-    x: boxContent.position.x + posX,
-    y: boxContent.position.y + posY,
-    z: camera.position.z + posZ,
 
+  console.log("Returning to Initial Position:", initialPosition);
+  TweenLite.to(boxContent.position, 1, {
+    x: initialPosition.x,
+    y: initialPosition.y,
+    z: initialPosition.z,
     ease: "Power3.easeInOut",
+    onComplete: () => {
+      console.log("Zoomed Out Position:", {
+        x: boxContent.position.x,
+        y: boxContent.position.y,
+        z: boxContent.position.z,
+      });
+      // Log position after a short delay to catch any unexpected changes
+      setTimeout(() => {
+        console.log("Position shortly after zoom out:", {
+          x: boxContent.position.x,
+          y: boxContent.position.y,
+          z: boxContent.position.z,
+        });
+      }, 500);
+    },
   });
+
   hasPlayedZoomAnimation = false;
   isZooming = true;
   if (!isMuted) setDefaultVolume(0.5, currentSoundPlayed);
@@ -241,7 +335,10 @@ let hoverPiano = false;
 document.addEventListener("click", () => {
   if (isZooming) return;
   if (hoverPiano && hasPlayedZoomAnimation === false) {
-    instrumentZoom(1.25, 1.25);
+    const { x, y } = isMobile()
+      ? mobileZoomPositions.piano
+      : { x: 1.5, y: 1.25 };
+    instrumentZoom(x, y);
     if (!isMuted) {
       if (currentSoundPlayed == 1) {
         pianoAudioInstance.volume = 1;
@@ -250,7 +347,7 @@ document.addEventListener("click", () => {
       }
     }
   } else if (hoverPiano && hasPlayedZoomAnimation === true) {
-    originalZoom(-1.25, -1.25, -6);
+    originalZoom();
   }
 });
 
@@ -259,7 +356,10 @@ let hoverGuitar = false;
 document.addEventListener("click", () => {
   if (isZooming) return;
   if (hoverGuitar && hasPlayedZoomAnimation === false) {
-    instrumentZoom(-1.25, 1.25);
+    const { x, y } = isMobile()
+      ? mobileZoomPositions.guitar
+      : { x: -1, y: 1.25 };
+    instrumentZoom(x, y);
     if (!isMuted) {
       if (currentSoundPlayed == 1) {
         guitarAudioInstance.volume = 1;
@@ -271,7 +371,7 @@ document.addEventListener("click", () => {
       }
     }
   } else if (hoverGuitar && hasPlayedZoomAnimation === true) {
-    originalZoom(1.25, -1.25, -6);
+    originalZoom();
   }
 });
 
@@ -280,7 +380,10 @@ let hoverDrums = false;
 document.addEventListener("click", () => {
   if (isZooming) return;
   if (hoverDrums && hasPlayedZoomAnimation === false) {
-    instrumentZoom(-1.25, -1.25);
+    const { x, y } = isMobile()
+      ? mobileZoomPositions.drums
+      : { x: -1, y: -1.5 };
+    instrumentZoom(x, y);
     if (!isMuted) {
       if (currentSoundPlayed == 1) {
         drumsAudioInstance.volume = 1;
@@ -294,7 +397,7 @@ document.addEventListener("click", () => {
       }
     }
   } else if (hoverDrums && hasPlayedZoomAnimation === true) {
-    originalZoom(1.25, 1.25, -6);
+    originalZoom();
   }
 });
 
@@ -303,7 +406,10 @@ let hoverBass = false;
 document.addEventListener("click", () => {
   if (isZooming) return;
   if (hoverBass && hasPlayedZoomAnimation === false) {
-    instrumentZoom(1.25, -1.25);
+    const { x, y } = isMobile()
+      ? mobileZoomPositions.bass
+      : { x: 1.5, y: -1.45 };
+    instrumentZoom(x, y);
     if (!isMuted) {
       if (currentSoundPlayed == 1) {
         bassAudioInstance.volume = 1;
@@ -314,31 +420,9 @@ document.addEventListener("click", () => {
       }
     }
   } else if (hoverBass && hasPlayedZoomAnimation === true) {
-    originalZoom(-1.25, 1.25, -6);
+    originalZoom();
   }
 });
-
-/**
- * Float box
- */
-
-const animation = new TimelineMax({
-  yoyo: true,
-  repeat: -1,
-});
-animation
-  .from(boxContent.position, 1, {
-    y: boxContent.position.y + 0.03,
-    ease: "linear",
-  })
-  .to(boxContent.position, 1, {
-    y: boxContent.position.y - 0.03,
-    ease: "linear",
-  })
-  .to(boxContent.position, 1, {
-    y: boxContent.position.y + 0.03,
-    ease: "linear",
-  });
 
 /**
  * Loop
@@ -348,34 +432,33 @@ const raycaster = new THREE.Raycaster();
 const loop = () => {
   window.requestAnimationFrame(loop);
 
+  // // Log the current position of boxContent
+  // console.log("Current Position in Loop:", {
+  //   x: boxContent.position.x,
+  //   y: boxContent.position.y,
+  //   z: boxContent.position.z,
+  // });
+
   //Add text
   if (boxContent.position.z.toFixed(1) == 4.4) {
     box.group.add(box.pianoText);
-    animation.pause();
   } else {
     box.group.remove(box.pianoText);
-    animation.resume();
   }
   if (boxContent.position.z.toFixed(1) == 4.4) {
     box4.group.add(box.bassText);
-    animation.pause();
   } else {
     box4.group.remove(box.bassText);
-    animation.resume();
   }
   if (boxContent.position.z.toFixed(1) == 4.4) {
     box3.group.add(box.drumsText);
-    animation.pause();
   } else {
     box3.group.remove(box.drumsText);
-    animation.resume();
   }
   if (boxContent.position.z.toFixed(1) == 4.4) {
     box2.group.add(box.guitarText);
-    animation.pause();
   } else {
     box2.group.remove(box.guitarText);
-    animation.resume();
   }
 
   // Cursor raycasting

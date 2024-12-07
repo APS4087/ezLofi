@@ -229,19 +229,26 @@ export const soundHandler = (box, menuCurrentSoundPlayedCallback, callback) => {
   let hasSlide = false;
 
   function originalSlide(box) {
+    const targetY = isMobile() ? -0.7 : -1.1;
     TweenLite.to(box.group.position, 1, {
-      y: -1,
+      y: targetY,
       ease: "Power3.easeInOut",
     });
     hasSlide = false;
   }
 
   function boxSlide(box) {
+    const targetY = isMobile() ? -5.5 : -6.5;
     TweenLite.to(box.group.position, 1, {
-      y: -6.5,
+      y: targetY,
       ease: "Power3.easeInOut",
     });
     hasSlide = true;
+  }
+
+  // Function to check if the device is mobile
+  function isMobile() {
+    return window.innerWidth <= 768;
   }
 };
 
