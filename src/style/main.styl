@@ -33,6 +33,70 @@ body
     overflow hidden
     background linear-gradient(#E0E4FF, #B0B8FF)
 
+
+/**
+ * PRELOADER
+ */
+
+@import url("http://fonts.cdnfonts.com/css/monument-extended");
+
+.preloader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #2C2F33; // Darker background color
+  z-index: 9999; // Ensure it is on top of other elements
+}
+
+.preloader-container h1 {
+  font-family: "Monument Extended", sans-serif;
+  font-size: 100px;
+  position: relative;
+  -webkit-text-stroke: 1px #99AAB5;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transform: translateY(100%);
+  letter-spacing: 1px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.preloader-container h1::before {
+  content: attr(data-title);
+  position: absolute;
+  background: #99AAB5; // Darker text color
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--preloader);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: all ease 0.1s;
+}
+
+.hide-text {
+  display: inline-flex;
+  overflow: hidden;
+}
+
+.count {
+  font-family: "Monument Extended", sans-serif;
+  font-size: 300px;
+  color: transparent;
+  position: absolute;
+  -webkit-text-stroke: 1px #99AAB5;
+  transition: all ease 1s;
+  font-weight: 900;
+  text-transform: uppercase;
+}
 /**
  * TYPO
  */
@@ -494,3 +558,14 @@ img.unmute{
 
       .sounds
         right 10px
+
+  .preloader-container
+    display none
+
+    h1
+      font-size 10vw
+      -webkit-text-stroke 0.5px #21258A
+
+    .count
+      font-size 20vw
+      -webkit-text-stroke 0.5px #21258A

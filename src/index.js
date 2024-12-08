@@ -35,6 +35,40 @@ import {
 // Menu handler
 import { menuHandler, menuCurrentSoundPlayed } from "./javascript/Menu";
 
+// PRELOADER
+document.addEventListener("DOMContentLoaded", () => {
+  let preloaderHeight = document.querySelector(".preloader-container");
+  let preloaderHeading = document.querySelector(".loading-heading");
+  let count = document.querySelector(".count");
+  let num = 0;
+
+  let preloading = setInterval(() => {
+    if (num < 100) {
+      preloaderHeading.style.transform = `translateY(${0}%)`;
+      preloaderHeading.style.transform = `skewY(${0}%)`;
+      preloaderHeading.style.transition = "all ease 0.25s"; // Adjusted transition timing
+      num++;
+      document.documentElement.style.setProperty("--preloader", num + "%");
+      count.textContent = num + "%";
+      count.style.transition = "all ease 0.25s"; // Adjusted transition timing
+    } else {
+      clearInterval(preloading);
+    }
+  }, 25);
+
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      preloaderHeading.style.transform = `translateY(${-100}%)`;
+      preloaderHeading.style.transition = "all ease 1s";
+      preloaderHeight.style.height = "0";
+      preloaderHeight.style.transition = "all 2s cubic-bezier(1,0,0,1)";
+      preloaderHeight.style.transitionDelay = "0.8s";
+      count.style.opacity = "0";
+      count.style.transition = "all ease 1s";
+    }, 3000);
+  });
+});
+
 let hasStarted = false;
 
 /**
