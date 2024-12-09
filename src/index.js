@@ -37,7 +37,7 @@ import { menuHandler, menuCurrentSoundPlayed } from "./javascript/Menu";
 
 // PRELOADER
 document.addEventListener("DOMContentLoaded", () => {
-  let preloaderHeight = document.querySelector(".preloader-container");
+  let preloaderContainer = document.querySelector(".preloader-container");
   let preloaderHeading = document.querySelector(".loading-heading");
   let count = document.querySelector(".count");
   let num = 0;
@@ -60,11 +60,14 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       preloaderHeading.style.transform = `translateY(${-100}%)`;
       preloaderHeading.style.transition = "all ease 1s";
-      preloaderHeight.style.height = "0";
-      preloaderHeight.style.transition = "all 2s cubic-bezier(1,0,0,1)";
-      preloaderHeight.style.transitionDelay = "0.8s";
+      preloaderContainer.style.height = "0";
+      preloaderContainer.style.transition = "all 2s cubic-bezier(1,0,0,1)";
+      preloaderContainer.style.transitionDelay = "0.8s";
       count.style.opacity = "0";
       count.style.transition = "all ease 1s";
+
+      // Add the finished class to the preloader container
+      preloaderContainer.classList.add("finished");
     }, 3000);
   });
 });
